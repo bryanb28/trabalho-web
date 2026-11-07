@@ -1,0 +1,385 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap");
+
+:root {
+  --verde-900: #12372a;
+  --verde-800: #1b4d3b;
+  --verde-600: #2f7d5b;
+  --verde-500: #3f9168;
+  --verde-100: #e3f1e8;
+  --verde-50:  #f3f9f5;
+
+  --laranja: #f08a3c;
+  --laranja-escuro: #d6721f;
+
+  --fundo: #edf3ee;
+  --texto: #1b2822;
+  --texto-suave: #5b6b63;
+  --borda: #d9e5dd;
+
+  --largura: 900px;
+}
+
+* {
+  box-sizing: border-box;   
+}
+
+body {
+  margin: 0;                
+  min-height: 100vh;
+  display: flex;            
+  flex-direction: column;
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.7;         
+  color: var(--texto);
+  background: var(--fundo);
+}
+
+h1, h2, h3 {
+  font-family: "Fraunces", Georgia, serif;
+  line-height: 1.2;
+  color: var(--verde-800);
+}
+
+p {
+  margin: 0 0 1rem;
+  max-width: 62ch;          
+}
+
+a {
+  color: var(--verde-600);
+}
+
+
+:focus-visible {
+  outline: 3px solid var(--laranja);
+  outline-offset: 3px;
+}
+
+.cabecalho {
+  color: white;
+  
+  background: linear-gradient(135deg, var(--verde-900), var(--verde-800) 60%, var(--verde-600));
+  
+  padding: 1.8rem max(1.25rem, calc((100% - var(--largura)) / 2)) 4.2rem;
+}
+
+.cabecalho h1 {
+  display: flex;            
+  align-items: center;
+  gap: 0.7rem;
+  margin: 0 0 1.2rem;
+  font-size: 2rem;
+  color: white;
+}
+
+.cabecalho h1::before {
+  content: "";
+  width: 0.8em;
+  height: 0.8em;
+  border-radius: 50%;       /* 50% = círculo */
+  background: var(--laranja);
+  box-shadow: 0 0 0 0.18em rgba(240, 138, 60, 0.3);
+}
+
+.menu ul {
+  list-style: none;         
+  margin: 0;
+  padding: 0;
+  display: flex;            
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.menu a {
+  display: block;
+  padding: 0.5rem 1.15rem;
+  color: #cfe6d9;
+  font-weight: 500;
+  text-decoration: none;    
+  border-radius: 999px;     
+  transition: background 0.2s;
+}
+
+.menu a:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+}
+
+.menu a.ativo {
+  background: white;
+  color: var(--verde-800);
+  font-weight: 700;
+}
+
+.container {
+  flex: 1;
+  width: min(var(--largura), calc(100% - 2.5rem));
+  margin: -2.2rem auto 3rem;   
+  padding: 1rem clamp(1.25rem, 5vw, 3rem) 2.6rem;
+  background: white;
+  border: 1px solid var(--borda);
+  border-radius: 22px;
+  box-shadow: 0 12px 32px -8px rgba(18, 55, 42, 0.2);
+}
+
+.secao {
+  margin-bottom: 2.2rem;
+}
+
+.secao:last-child {
+  margin-bottom: 0;
+}
+
+h2 {
+  margin: 1.6rem 0 0.7rem;
+  font-size: 1.55rem;
+}
+
+.secao h2 {
+  margin-top: 0;
+}
+
+.container > .secao:first-child > h2,
+.container > h2:first-child {
+  margin-top: 1.4rem;
+  font-size: clamp(1.8rem, 4.5vw, 2.3rem);
+}
+
+.container > .secao:first-child > h2::after,
+.container > h2:first-child::after {
+  content: "";
+  display: block;
+  width: 56px;
+  height: 5px;
+  margin-top: 0.7rem;
+  border-radius: 3px;
+  background: var(--laranja);
+}
+
+h3 {
+  margin: 0 0 0.6rem;
+  font-size: 1.2rem;
+}
+
+.imagem {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 1rem 0 1.4rem;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px -10px rgba(18, 55, 42, 0.4);
+}
+
+.lista {
+  margin: 0;
+  padding-left: 1.3rem;
+}
+
+.lista li::marker {         
+  color: var(--laranja);
+}
+
+.aviso {
+  padding: 1.2rem 1.5rem 1rem;
+  background: var(--verde-50);
+  border: 1px solid var(--verde-100);
+  border-left: 5px solid var(--verde-500);
+  border-radius: 14px;
+}
+
+.aviso p:last-child {
+  margin-bottom: 0;
+}
+
+.botao {
+  display: inline-block;
+  padding: 0.85rem 1.9rem;
+  font: inherit;            
+  font-weight: 700;
+  color: white;
+  background: linear-gradient(180deg, #f5984f, var(--laranja));
+  border: none;
+  border-radius: 999px;
+  box-shadow: 0 6px 16px -4px rgba(214, 114, 31, 0.55);
+  text-decoration: none;
+  cursor: pointer;          
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.botao:hover {
+  color: white;
+  transform: translateY(-2px);   /* sobe 2px */
+  box-shadow: 0 10px 22px -4px rgba(214, 114, 31, 0.6);
+}
+
+.botao:active {
+  transform: translateY(0);
+}
+
+.botao[type="reset"] {
+  color: var(--verde-800);
+  background: white;
+  border: 2px solid var(--borda);
+  box-shadow: none;
+}
+
+.botao[type="reset"]:hover {
+  color: var(--verde-800);
+  background: var(--verde-50);
+  border-color: var(--verde-500);
+  box-shadow: none;
+}
+
+.formulario {  display: grid;           
+  gap: 1.3rem;
+  margin-top: 1.4rem;
+}
+
+.grupo {                   
+  margin: 0;
+  padding: 1.4rem 1.5rem 1.6rem;
+  background: var(--verde-50);
+  border: 1px solid var(--verde-100);
+  border-radius: 14px;
+ 
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.1rem 1.4rem;
+}
+
+.grupo legend {
+  padding: 0.25rem 0.9rem;
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 700;
+  color: white;
+  background: var(--verde-600);
+  border-radius: 999px;
+}
+
+.campo:has(textarea),
+.campo:has(input[type="radio"]),
+.campo:has(input[type="checkbox"]) {
+  grid-column: 1 / -1;
+}
+
+.campo label,
+.campo p {                  
+  display: block;
+  margin: 0;
+  font-size: 0.93rem;
+  font-weight: 500;
+  color: var(--verde-900);
+}
+
+.campo input[type="text"],
+.campo input[type="email"],
+.campo input[type="number"],
+.campo select,
+.campo textarea {
+  display: block;
+  width: 100%;
+  margin-top: 0.4rem;
+  padding: 0.7rem 0.9rem;
+  font: inherit;
+  color: var(--texto);
+  background: white;
+  border: 1.5px solid var(--borda);
+  border-radius: 10px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.campo textarea {
+  min-height: 110px;
+  resize: vertical;         
+}
+
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+  outline: none;
+  border-color: var(--verde-500);
+  box-shadow: 0 0 0 4px rgba(63, 145, 104, 0.2);
+}
+
+.campo {
+  position: relative;
+}
+
+.campo input[type="radio"] {
+  position: absolute;      
+  opacity: 0;
+}
+
+.campo input[type="radio"] + label {
+  display: inline-block;
+  margin: 0.4rem 0.5rem 0 0;
+  padding: 0.5rem 1.1rem;
+  background: white;
+  border: 1.5px solid var(--borda);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.campo input[type="radio"] + label:hover {
+  border-color: var(--verde-500);
+}
+
+
+.campo input[type="radio"]:checked + label {
+  background: var(--verde-100);
+  border-color: var(--verde-600);
+  font-weight: 700;
+}
+
+.campo input[type="radio"]:focus-visible + label {
+  outline: 3px solid var(--laranja);
+  outline-offset: 2px;
+}
+
+.campo input[type="checkbox"] {
+  width: 1.15rem;
+  height: 1.15rem;
+  margin: 0 0.5rem 0 0;
+  accent-color: var(--verde-600);  
+  vertical-align: middle;
+}
+
+.campo input[type="checkbox"] + label {
+  display: inline;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.resultado {
+  padding: 1.2rem 1.5rem;
+  background: linear-gradient(135deg, var(--verde-50), var(--verde-100));
+  border: 1px solid var(--verde-500);
+  border-radius: 14px;
+}
+
+.resultado:empty {          
+  display: none;
+}
+
+.resultado p {
+  margin-bottom: 0.4rem;
+}
+
+.container > .botao {       
+  margin-top: 0.4rem;
+}
+
+.rodape {
+  padding: 0 1.25rem 2rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--texto-suave);
+}
+
+.rodape p {
+  margin: 0 auto;
+}
+
+

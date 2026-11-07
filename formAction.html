@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="cabecalho">
+        <h1>Web kcalculator</h1>
+        <nav class="menu">
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="form.html">Calcular dieta</a></li>
+                <li><a href="about.html">Sobre</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h2>Seu resultado</h2>
+
+        <section class="secao">
+            <h3>Dados informados</h3>
+            <div id="dadosRecebidos" class="resultado">
+                <!-- o JS preenche aqui com os dados que vieram do form -->
+            </div>
+        </section>
+
+        <section class="secao">
+            <h3>Estimativa de calorias</h3>
+            <div id="resultado" class="resultado">
+                <!-- o JS mostra o cálculo aqui -->
+            </div>
+        </section>
+
+        <a href="form.html" class="botao">Calcular de novo</a>
+    </main>
+
+    <footer class="rodape">
+        <p>Trabalho de Programação Web — PUCPR</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo de dieta</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="cabecalho">
+        <h1>Web kcalculator</h1>
+        <nav class="menu">
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="form.html">Calcular dieta</a></li>
+                <li><a href="about.html">Sobre</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="secao">
+            <h2>Calcule sua dieta</h2>
+            <p>Preencha seus dados para ver uma estimativa de calorias por dia.</p>
+
+            <form id="formDieta" class="formulario" action="formAction.html" method="GET">
+
+                <fieldset class="grupo">
+                    <legend>Dados pessoais</legend>
+
+                    <div class="campo">
+                        <label for="nome">Nome</label>
+                        <input type="text" id="nome" name="nome">
+                    </div>
+
+                    <div class="campo">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email">
+                    </div>
+
+                    <div class="campo">
+                        <label for="idade">Idade</label>
+                        <input type="number" id="idade" name="idade">
+                    </div>
+
+                    <div class="campo">
+                        <p>Sexo</p>
+                        <input type="radio" id="masculino" name="sexo" value="masculino">
+                        <label for="masculino">Masculino</label>
+                        <input type="radio" id="feminino" name="sexo" value="feminino">
+                        <label for="feminino">Feminino</label>
+                    </div>
+                </fieldset>
+
+                <fieldset class="grupo">
+                    <legend>Medidas</legend>
+
+                    <div class="campo">
+                        <label for="peso">Peso (kg)</label>
+                        <input type="number" id="peso" name="peso" step="0.1">
+                    </div>
+
+                    <div class="campo">
+                        <label for="altura">Altura (cm)</label>
+                        <input type="number" id="altura" name="altura">
+                    </div>
+                </fieldset>
+
+                <fieldset class="grupo">
+                    <legend>Rotina e objetivo</legend>
+
+                    <div class="campo">
+                        <label for="atividade">Nível de atividade física</label>
+                        <select id="atividade" name="atividade">
+                            <option value="">Selecione</option>
+                            <option value="sedentario">Sedentário</option>
+                            <option value="leve">Leve (1 a 3 dias por semana)</option>
+                            <option value="moderado">Moderado (3 a 5 dias por semana)</option>
+                            <option value="intenso">Intenso (6 a 7 dias por semana)</option>
+                        </select>
+                    </div>
+
+                    <div class="campo">
+                        <label for="objetivo">Objetivo</label>
+                        <select id="objetivo" name="objetivo">
+                            <option value="">Selecione</option>
+                            <option value="perder">Perder peso</option>
+                            <option value="manter">Manter peso</option>
+                            <option value="ganhar">Ganhar massa</option>
+                        </select>
+                    </div>
+
+                    <div class="campo">
+                        <label for="observacoes">Observações</label>
+                        <textarea id="observacoes" name="observacoes" rows="4"></textarea>
+                    </div>
+
+                    <div class="campo">
+                        <input type="checkbox" id="termos" name="termos" value="aceito">
+                        <label for="termos">Entendo que o resultado é só uma estimativa</label>
+                    </div>
+                </fieldset>
+
+                <button type="submit" class="botao">Calcular</button>
+                <button type="reset" class="botao">Limpar</button>
+
+            </form>
+        </section>
+    </main>
+
+    <footer class="rodape">
+        <p>Trabalho de Programação Web — PUCPR</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
