@@ -1,4 +1,14 @@
-//efeitos
+//FUNÇÂO PRA TROCA DE PAGINA COM animação de CARREGAMENTO
+function trocarPagina(destino){
+    const loading = document.getElementById("loading");
+    if(loading){
+        loading.style.display = "flex"
+    }
+
+    setTimeout(function(){
+        window.location.href = destino;
+    }, 1000)
+}
 
 
 //evento preencher formulario(pagina pra preencher o formulario)
@@ -13,17 +23,20 @@ if(formulario){
         //pegar o peso 
         let peso = document.getElementById("peso").value;
         peso = parseFloat(peso)
-        sessionStorage.setItem("peso", peso);
+
+        let nome = document.getElementById("nome").value;
+        let email = document.getElementById("element").value;
+
 
         //pegar a altura
         let altura = document.getElementById("altura").value;
         altura = parseFloat(altura)
-        sessionStorage.setItem("altura", altura);
+
 
         //pegar idade
         let idade = document.getElementById("idade").value;
         idade = parseFloat(idade);
-        sessionStorage.setItem("idade", idade);
+
 
         //pegar genero
         let genero = document.querySelector('input[name="sexo"]:checked').value;
@@ -53,7 +66,6 @@ if(formulario){
             }
         }
         let atividade = fatorAtividade(nivelAtividade);
-        sessionStorage.setItem("atividade", atividade);
 
         //DEFINIR O NIVEL DE ATIVIDADE FISICA 
         function definirObjetivo(){
@@ -67,7 +79,6 @@ if(formulario){
             }
         }
         let objetivo = definirObjetivo();
-        sessionStorage.setItem("objetivo", objetivo);
 
         function definirGenero(genero){
             if(genero === "masculino"){
@@ -77,7 +88,7 @@ if(formulario){
             }
         }
         genero = definirGenero(genero);
-        sessionStorage.setItem("genero", genero);
+
 
         
         function calculoCalorias(peso, altura,idade, genero, atividade, objetivo ){
@@ -86,11 +97,25 @@ if(formulario){
 
             let calorias = (tmb * atividade) + objetivo;
             return calorias
-    }
-    let valorCalorias = calculoCalorias(peso, altura, idade, genero, atividade, objetivo);
-    sessionStorage.setItem("resultado", valorCalorias);
+    };
 
-        window.location.href = "formAction.html";
+    let valorCalorias = calculoCalorias(peso, altura, idade, genero, atividade, objetivo);
+
+    const parametros = new URLSearchParams();
+    parametros.append("peso", peso);
+    parametros.append("altura", altura);
+    parametros.append("idade", idade);
+    parametros.append("genero", genero);
+    parametros.append("atividade", atividade);
+    parametros.append("objetivo", objetivo);
+    parametros.append("resultado", valorCalorias);
+    parametros.append("nome", nome);
+    paramentros.append("email", email);
+
+    
+        
+    trocarPagina("formAction.html?" + parametros.toString());
+
     });
 };
 
@@ -98,8 +123,21 @@ if(formulario){
 //pagina de resposta
 const resultado = document.getElementById("resultado");
 if (resultado) {
-    let valorCalorias = sessionStorage.getItem("resultado");
+    const parametros = new URLSearchParams(window.location.search);
+
+    const valorCalorias = parametros.get("resultado");
+    const peso = parametros.get("peso");
+    const altura = parametros.get("altura");
+    const idade = parametros.get("idade");
+    const genero = parametros.get("genero");
+    const atividade = parametros.get("atividade");
+    const objetivo = parametros.get("objetivo");
+    const nome = parametros.get("nome");
+    const email = parametros.get("email");
+
     resultado.textContent = Math.floor(valorCalorias) + " kcal por dia";
+
+    document.getElementById("dadosrecebidos").textContent = `Peso: ${peso} kg | Altura: ${altura} cm | Idade: ${idade} anos`;
     
     
 
@@ -108,5 +146,15 @@ if (resultado) {
     idade = ''
     genero = ''
 };
+
+//usar a função de trocar de pagina com animação de carregamento
+
+const botaoNovamente = document.getElementById("calcularNovamente");
+if(botaoNovamente){
+    botaoNovamente.addEventListener("click", function(event){
+        event.preventDefault();
+        trocarPagina("form.html")//reaproveita a função criada anteiormente
+    });
+}
 
 
