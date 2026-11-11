@@ -21,25 +21,25 @@ if(formulario){
             return
         }
         //pegar o peso 
-        let peso = document.getElementById("peso").value;
+        let peso = document.getElementById("peso").value;//getElementeById retorna o elemento do id do html e o .value acessa esse valor 
         peso = parseFloat(peso)
 
         let nome = document.getElementById("nome").value;
-        let email = document.getElementById("element").value;
+        let email = document.getElementById("email").value;
 
 
         //pegar a altura
         let altura = document.getElementById("altura").value;
-        altura = parseFloat(altura)
+        altura = parseFloat(altura)//persefloat transforma string em numero ponto flutuante
 
 
         //pegar idade
         let idade = document.getElementById("idade").value;
-        idade = parseFloat(idade);
+        idade = parseFloat(idade);//persefloat transforma string em numero ponto flutuante
 
 
         //pegar genero
-        let genero = document.querySelector('input[name="sexo"]:checked').value;
+        let genero = document.querySelector('input[name="sexo"]:checked').value;// queryselector usa pra ver qual foi a escolha em caso de botao de selecionar
 
         // nivel de atividade fisica
 
@@ -51,6 +51,7 @@ if(formulario){
         let nivelAtividade = document.getElementById("atividade").value;
 
         function fatorAtividade(nivelAtividade) {
+            // aqui sao constantes que representam cada nivel de atividade na formula utilizada pra calcular as kcal
             const sedentario = 1.2;
             const leve = 1.375;
             const moderado = 1.55;
@@ -101,7 +102,7 @@ if(formulario){
 
     let valorCalorias = calculoCalorias(peso, altura, idade, genero, atividade, objetivo);
 
-    const parametros = new URLSearchParams();
+    let parametros = new URLSearchParams();// crio uma variavel parametros e declara ela como urlsearchparams que permite criar e manipular parametros que sao colocados na URL do site
     parametros.append("peso", peso);
     parametros.append("altura", altura);
     parametros.append("idade", idade);
@@ -110,11 +111,11 @@ if(formulario){
     parametros.append("objetivo", objetivo);
     parametros.append("resultado", valorCalorias);
     parametros.append("nome", nome);
-    paramentros.append("email", email);
+    parametros.append("email", email);
 
     
         
-    trocarPagina("formAction.html?" + parametros.toString());
+    trocarPagina("formAction.html?" + parametros.toString()); //transforma o parametros em uma string 
 
     });
 };
@@ -125,26 +126,29 @@ const resultado = document.getElementById("resultado");
 if (resultado) {
     const parametros = new URLSearchParams(window.location.search);
 
-    const valorCalorias = parametros.get("resultado");
-    const peso = parametros.get("peso");
-    const altura = parametros.get("altura");
-    const idade = parametros.get("idade");
-    const genero = parametros.get("genero");
-    const atividade = parametros.get("atividade");
-    const objetivo = parametros.get("objetivo");
-    const nome = parametros.get("nome");
-    const email = parametros.get("email");
+    let valorCalorias = parametros.get("resultado");
+    let peso = parametros.get("peso");
+    let altura = parametros.get("altura");
+    let idade = parametros.get("idade");
+    let genero = parametros.get("genero");
+    let atividade = parametros.get("atividade");
+    let objetivo = parametros.get("objetivo");
+    let nome = parametros.get("nome");
+    let email = parametros.get("email");
 
-    resultado.textContent = Math.floor(valorCalorias) + " kcal por dia";
+    resultado.textContent = Math.floor(valorCalorias) + " kcal por dia";//mathfloor arredonda o numero pra ficar sem ponto flutuante 
 
-    document.getElementById("dadosrecebidos").textContent = `Peso: ${peso} kg | Altura: ${altura} cm | Idade: ${idade} anos`;
+
+    //innerHTML da um retorn do texto com o html escrito e substiriu pelo novo fornecido isso cria um <p> paragrafo dentro do elemento
+    document.getElementById("dadosRecebidos").innerHTML = `
+    <p>Nome: ${nome}</p>
+    <p>E-mail: ${email}</p>
+    <p>Peso: ${peso} kg</p>
+    <p>Altura: ${altura} cm</p>
+    <p>Idade: ${idade} anos</p>
+    <p>Sexo: ${genero === "5" ? "Masculino" : "Feminino"}</p>
+`;
     
-    
-
-    peso = ''
-    altura = ''
-    idade = ''
-    genero = ''
 };
 
 //usar a função de trocar de pagina com animação de carregamento
